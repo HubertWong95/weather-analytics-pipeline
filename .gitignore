@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+
+# Virtual environments
+venv/
+.env/
+
+# DBT artifacts
+dbt_modules/
+dbt_packages/
+logs/
+target/
+
+# Airflow
+airflow/airflow.db
+airflow/airflow-webserver.pid
+airflow/logs/
+
+# Jupyter Notebooks (if any)
+.ipynb_checkpoints/
+
+# System
+.DS_Store
+
+# .gitignore
+
+# Ignore all raw CSVs
+/data_ingestion/raw/*.csv
+
