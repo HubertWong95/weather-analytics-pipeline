@@ -30,3 +30,4 @@ airflow/logs/
 # Ignore all raw CSVs
 /data_ingestion/raw/*.csv
 
+docker/airflow/config/weather-analytics-gcp-key.json
