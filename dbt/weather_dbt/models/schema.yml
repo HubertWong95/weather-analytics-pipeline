@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_weather_data
+    description: "Staged raw weather data from BigQuery"
+    columns:
+      - name: location
+        tests: [not_null]
+      - name: date_time
+        tests: [not_null]
+
+  - name: avg_weather_by_location
+    description: "Average weather stats grouped by location"
+    columns:
+      - name: location
+        tests: [not_null]
+      - name: avg_temp_c
+        description: "Average temperature in Celsius"
+      - name: avg_humidity
+        description: "Average humidity percentage"
+      - name: avg_precipitation
+        description: "Average precipitation in mm"
+      - name: avg_wind_speed
+        description: "Average wind speed in km/h"
+
+  - name: daily_avg_temperature
+    description: "Daily average temperature across all cities"
+    columns:
+      - name: day
+        tests: [not_null]
+      - name: avg_temp_c
+        description: "Average temperature in Celsius"
