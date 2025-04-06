@@ -8,25 +8,48 @@ models:
         tests: [not_null]
       - name: date_time
         tests: [not_null]
+      - name: temperature_c
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -50
+              max_value: 60
 
   - name: avg_weather_by_location
     description: "Average weather stats grouped by location"
     columns:
       - name: location
-        tests: [not_null]
+        tests: [not_null, unique]
       - name: avg_temp_c
         description: "Average temperature in Celsius"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -50
+              max_value: 60
       - name: avg_humidity
-        description: "Average humidity percentage"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
       - name: avg_precipitation
-        description: "Average precipitation in mm"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 500
       - name: avg_wind_speed
-        description: "Average wind speed in km/h"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 300
 
   - name: daily_avg_temperature
     description: "Daily average temperature across all cities"
     columns:
       - name: day
-        tests: [not_null]
+        tests: [not_null, unique]
       - name: avg_temp_c
         description: "Average temperature in Celsius"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: -50
+              max_value: 60
